@@ -78,7 +78,11 @@ export default {
       return this.sum;
     },
     generateWorkout: function () {
-      console.log("We are getting somehwere.");
+      axios.post("http://localhost:3000/workouts").then((response) => {
+        this.workouts = response.data;
+        console.log("hello", this.workouts);
+        this.$router.push("/");
+      });
     },
   },
 };
