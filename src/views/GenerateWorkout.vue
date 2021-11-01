@@ -90,7 +90,7 @@ export default {
       };
       axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
         console.log("Test", response.data);
-        this.$router.push("/");
+        this.$router.push("/workout");
       });
     },
   },
