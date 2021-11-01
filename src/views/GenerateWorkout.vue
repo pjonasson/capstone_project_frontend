@@ -53,6 +53,7 @@ export default {
       coreLifts: 0,
       chestLifts: 0,
       sum: 0,
+      chestId: 1,
     };
   },
   created: function () {
@@ -78,9 +79,17 @@ export default {
       return this.sum;
     },
     generateWorkout: function () {
-      axios.post("http://localhost:3000/workouts").then((response) => {
+      var workoutParams = { number_of_lifts: this.sum };
+      axios.post("http://localhost:3000/workouts", workoutParams).then((response) => {
         this.workouts = response.data;
         console.log("hello", this.workouts);
+      });
+      var liftWorkoutParams = {
+        primary_muscle_id: 1,
+        workout_id: 22,
+      };
+      axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
+        console.log("Test", response.data);
         this.$router.push("/");
       });
     },
