@@ -33,7 +33,7 @@
       </p>
       <p>Total Lifts: {{ totalLifts() }}</p>
     </div>
-    <button v-on:click="generateWorkout()">Generate Your Workout!</button>
+    <button v-on:click="generateWorkout()">Time to Workout!</button>
   </div>
 </template>
 
