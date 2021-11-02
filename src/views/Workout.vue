@@ -13,7 +13,7 @@
       <a href="">{{ lift_workout.lift.video_url }}</a>
       <br />
       <div>
-        <button v-on:click="showLiftWorkout(liftWorkout)">Update Exercise Stats</button>
+        <button v-on:click="showLiftWorkout(lift_workout)">Update Exercise Stats</button>
       </div>
       <p></p>
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
@@ -68,7 +68,7 @@ export default {
   data: function () {
     return {
       userId: localStorage.getItem("userId"),
-      user: [],
+      user: { workouts: [{}] },
       workouts: [],
       lift_workouts: [],
       currentLiftWorkout: {},
