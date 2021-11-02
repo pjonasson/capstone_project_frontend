@@ -1,39 +1,47 @@
 <template>
   <div class="GenerateWorkout">
-    <h1>Below are the primary muscles.</h1>
+    <h1>Below are the muscles groups to choose from.</h1>
     <h3>How many lifts would you like to do for each muscle?</h3>
     <div>
       <p>
         Chest:
         <input type="number" v-model="chestLifts" />
+        <button v-on:click="addToWorkout(1, chestLifts)">Add to Workout</button>
       </p>
       <p>
-        Leg:
+        Legs:
         <input type="number" v-model="legLifts" />
+        <button v-on:click="addToWorkout(2, legLifts)">Add to Workout</button>
       </p>
       <p>
-        Bicep:
+        Biceps:
         <input type="number" v-model="bicepLifts" />
+        <button v-on:click="addToWorkout(3, bicepLifts)">Add to Workout</button>
       </p>
       <p>
-        Tricep:
+        Triceps:
         <input type="number" v-model="tricepLifts" />
+        <button v-on:click="addToWorkout(4, tricepLifts)">Add to Workout</button>
       </p>
       <p>
-        Shoulder:
+        Shoulders:
         <input type="number" v-model="shoulderLifts" />
+        <button v-on:click="addToWorkout(5, shoulderLifts)">Add to Workout</button>
       </p>
       <p>
         Back:
         <input type="number" v-model="backLifts" />
+        <button v-on:click="addToWorkout(6, backLifts)">Add to Workout</button>
       </p>
       <p>
         Core:
         <input type="number" v-model="coreLifts" />
+        <button v-on:click="addToWorkout(7, coreLifts)">Add to Workout</button>
       </p>
       <p>Total Lifts: {{ totalLifts() }}</p>
     </div>
-    <button v-on:click="generateWorkout()">Time to Workout!</button>
+    <router-link to="/workout">Time to Workout!</router-link>
+    <!-- <button v-on:click="">Time to Workout!</button> -->
   </div>
 </template>
 
@@ -58,6 +66,7 @@ export default {
   },
   created: function () {
     this.indexPrimaryMuscles();
+    this.generateWorkout();
   },
   methods: {
     indexPrimaryMuscles() {
@@ -67,7 +76,6 @@ export default {
       });
     },
     totalLifts: function () {
-      console.log("hello");
       this.sum =
         parseInt(this.chestLifts) +
         parseInt(this.legLifts) +
@@ -79,19 +87,22 @@ export default {
       return this.sum;
     },
     generateWorkout: function () {
-      var workoutParams = { number_of_lifts: this.sum };
+      var workoutParams = { number_of_lifts: 0 };
       axios.post("http://localhost:3000/workouts", workoutParams).then((response) => {
         this.workout = response.data;
-        console.log("hello", this.workout);
+        console.log("Workout generated", this.workout);
+      });
+    },
+    addToWorkout: function (primary_muscle_id, x) {
+      for (let quantity = 0; quantity < x; quantity++) {
         var liftWorkoutParams = {
-          primary_muscle_id: 1,
+          primary_muscle_id: primary_muscle_id,
           workout_id: this.workout.id,
         };
         axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
           console.log("Test", response.data);
-          this.$router.push("/workout");
         });
-      });
+      }
     },
   },
 };
