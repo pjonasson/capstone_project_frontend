@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import GenerateWorkout from "../views/GenerateWorkout.vue";
 import Workout from "../views/Workout.vue";
 import Signup from "../views/Signup.vue";
+import Logout from "../views/Logout.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
   },
 ];
 
