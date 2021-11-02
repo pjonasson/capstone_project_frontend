@@ -8,6 +8,8 @@
       <router-link to="/signup">Sign Up</router-link>
       |
       <router-link to="/logout">Log Out</router-link>
+      |
+      <router-link to="/generate_workout">Generate Workout</router-link>
     </div>
     <router-view />
   </div>

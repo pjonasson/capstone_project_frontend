@@ -81,16 +81,16 @@ export default {
     generateWorkout: function () {
       var workoutParams = { number_of_lifts: this.sum };
       axios.post("http://localhost:3000/workouts", workoutParams).then((response) => {
-        this.workouts = response.data;
-        console.log("hello", this.workouts);
-      });
-      var liftWorkoutParams = {
-        primary_muscle_id: 1,
-        workout_id: 22,
-      };
-      axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
-        console.log("Test", response.data);
-        this.$router.push("/workout");
+        this.workout = response.data;
+        console.log("hello", this.workout);
+        var liftWorkoutParams = {
+          primary_muscle_id: 1,
+          workout_id: this.workout.id,
+        };
+        axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
+          console.log("Test", response.data);
+          this.$router.push("/workout");
+        });
       });
     },
   },
