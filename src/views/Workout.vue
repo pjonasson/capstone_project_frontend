@@ -16,10 +16,17 @@ export default {
   },
   created: function () {
     this.currentLiftWorkout();
+    this.currentUserWorkout();
   },
   methods: {
     currentLiftWorkout: function () {
-      axios.get("http://localhost:3000/users/1").then((response) => {
+      axios.get("http://localhost:3000/users/").then((response) => {
+        this.user = response.data;
+        console.log(this.user);
+      });
+    },
+    currentUserWorkout: function () {
+      axios.get("http://localhost:3000/current_workout").then((response) => {
         this.user = response.data;
         console.log(this.user);
       });
