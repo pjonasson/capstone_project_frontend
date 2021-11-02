@@ -1,0 +1,73 @@
+<template>
+  <div class="signup">
+    <form v-on:submit.prevent="submit()" autocomplete="off">
+      <h1>Signup</h1>
+      <ul>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      </ul>
+      <div>
+        <label>First Name:</label>
+        <input type="text" v-model="newUserParams.first_name" />
+        <small v-if="newUserParams.first_name.length > 20">Must be fewer than 20 Characters</small>
+      </div>
+      <div>
+        <label>Last Name:</label>
+        <input type="text" v-model="newUserParams.last_name" />
+        <small v-if="newUserParams.last_name.length > 20">Must be fewer than 20 Characters</small>
+      </div>
+      <div>
+        <label>Username:</label>
+        <input type="text" v-model="newUserParams.username" />
+        <small v-if="newUserParams.username.length > 20">Must be fewer than 20 Characters</small>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" autocomplete="off" v-model="newUserParams.email" />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" v-model="newUserParams.password" />
+      </div>
+      <div v-if="newUserParams.password.length > 6">
+        <label>Password confirmation:</label>
+        <input type="password" v-model="newUserParams.password_confirmation" />
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data: function () {
+    return {
+      newUserParams: {
+        first_name: "",
+        last_name: "",
+        username: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+      },
+      errors: [],
+    };
+  },
+  methods: {
+    submit: function () {
+      axios
+        .post("/users", this.newUserParams)
+        .then((response) => {
+          console.log(response.data);
+          this.$parent.flashMessage = "New User Created";
+
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+  },
+};
+</script>
