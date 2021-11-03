@@ -40,8 +40,8 @@
       </p>
       <p>Total Lifts: {{ totalLifts() }}</p>
     </div>
-    <router-link to="/workout">Time to Workout!</router-link>
-    <!-- <button v-on:click="">Time to Workout!</button> -->
+    <!-- <router-link to="/workout">Time to Workout!</router-link> -->
+    <button v-on:click="updateWorkout">Time to Workout!</button>
   </div>
 </template>
 
@@ -103,6 +103,13 @@ export default {
           console.log("Test", response.data);
         });
       }
+    },
+    updateWorkout: function () {
+      var workoutParams = { number_of_lifts: this.sum };
+      axios.patch("http://localhost:3000/workouts/" + this.workout.id, workoutParams).then((response) => {
+        console.log("Workout updated", response.data);
+        this.$router.push("/workout");
+      });
     },
   },
 };

@@ -22,7 +22,7 @@
     <div>
       <dialog id="liftworkout-details">
         <form method="dialog">
-          <h1>Product info</h1>
+          <h1>Workout info</h1>
           <p>
             1st Set Reps:
             <input type="number" v-model="currentLiftWorkout.set1_reps" />
