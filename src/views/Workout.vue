@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="app">
     <h1>Here is your workout, {{ user.first_name }}.</h1>
     <div v-for="lift_workout in user.workouts[0].lift_workouts" v-bind:key="lift_workout.id">
       <h2>Exercise: {{ lift_workout.lift.name }}</h2>

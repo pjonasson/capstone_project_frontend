@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="app">
     <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>

@@ -1,5 +1,5 @@
 <template>
-  <div class="signup">
+  <div class="app">
     <form v-on:submit.prevent="submit()" autocomplete="off">
       <h1>Signup</h1>
       <ul>

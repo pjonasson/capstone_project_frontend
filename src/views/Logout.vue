@@ -1,5 +1,5 @@
 <template>
-  <div class="logout"></div>
+  <div class="app"></div>
 </template>
 
 <script>

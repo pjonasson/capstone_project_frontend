@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="app">
     <h1>User profile page for {{ user.username }}.</h1>
     <div v-for="workout in user.workouts" v-bind:key="workout.id">
       <p>{{ workout.created_at }}</p>
