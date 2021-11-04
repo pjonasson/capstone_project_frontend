@@ -1,20 +1,25 @@
 <template>
   <div class="app">
-    <form v-on:submit.prevent="submit()">
-      <h1>Login</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div>
-        <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
+    <section id="hero" class="d-flex align-items-top">
+      <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+        <form v-on:submit.prevent="submit()">
+          <h1>Login</h1>
+          <ul>
+            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+          </ul>
+          <div>
+            <h2>Email:</h2>
+            <input type="email" v-model="newSessionParams.email" />
+          </div>
+          <div>
+            <h2>Password:</h2>
+            <input type="password" v-model="newSessionParams.password" />
+          </div>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
-      </div>
-      <input type="submit" value="Submit" />
-    </form>
+    </section>
   </div>
 </template>
 
