@@ -22,7 +22,7 @@
 
     <div>
       <dialog id="workoutsummary-details">
-        <form method="dialog">
+        <form method="dialog" onsubmit="setTimeout(function(){window.location.reload();},10);">
           <h1>Workout Summary</h1>
           <div v-for="lift_workout in currentWorkout.lift_workouts" v-bind:key="lift_workout.id">
             <p>Exercise: {{ lift_workout.lift.name }}</p>
@@ -35,6 +35,7 @@
             <p>Comments: {{ lift_workout.comments }}</p>
           </div>
           <button v-on:click="repeatWorkout">Repeat Workout</button>
+          <button v-on:click="deleteWorkout">Delete Workout</button>
           <button>Close</button>
         </form>
       </dialog>
@@ -77,6 +78,12 @@ export default {
       axios.post("http://localhost:3000/workouts", repeatWorkoutParams).then((response) => {
         console.log("Workout cloned", response.data);
         this.$router.push("/workout");
+      });
+    },
+    deleteWorkout: function () {
+      var deleteWorkoutParams = this.currentWorkout.id;
+      axios.delete("http://localhost:3000/workouts/" + deleteWorkoutParams).then((response) => {
+        console.log("Workout succesfully deleted", response.data);
       });
     },
   },

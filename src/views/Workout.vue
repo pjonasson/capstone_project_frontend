@@ -16,8 +16,8 @@
         <button v-on:click="showLiftWorkout(lift_workout)">Update Exercise Stats</button>
       </div>
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
-      <router-link to="/profile">Finish Workout</router-link>
     </div>
+    <router-link to="/profile">Finish Workout</router-link>
 
     <div>
       <dialog id="liftworkout-details">
