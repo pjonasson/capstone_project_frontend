@@ -6,10 +6,11 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/generate_workout">Generate New Workout</a></li>
-            <li><a href="/profile">Profile</a></li>
+            <li><a v-if="!isLoggedIn()" href="/signup">Sign Up</a></li>
+            <li><a v-if="!isLoggedIn()" href="/login">Login</a></li>
+            <li><a v-if="isLoggedIn()" href="/generate_workout">Generate New Workout</a></li>
+            <li><a v-if="isLoggedIn()" href="/profile">Profile</a></li>
+            <li><a v-if="isLoggedIn()" href="/logout">Log Out</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -58,3 +59,20 @@
 </template>
 
 <style></style>
+
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+  methods: {
+    isLoggedIn: function () {
+      if (localStorage.getItem("jwt")) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+};
+</script>

@@ -36,6 +36,7 @@
           </div>
           <button v-on:click="repeatWorkout">Repeat Workout</button>
           <button v-on:click="deleteWorkout">Delete Workout</button>
+          <br />
           <button>Close</button>
         </form>
       </dialog>
