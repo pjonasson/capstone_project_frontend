@@ -5,8 +5,8 @@
       <div class="col-sm-4" v-for="workout in user.workouts" v-bind:key="workout.id">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{{ workout.created_at }}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <h5 class="card-title">{{ workout.friendly_created_at }}</h5>
+            <p class="card-text">{{ workout.friendly_time_created_at }} {{ workout.count }}</p>
             <a v-on:click="showWorkoutSummary(workout)" class="btn btn-primary">Workout Summary</a>
           </div>
         </div>
