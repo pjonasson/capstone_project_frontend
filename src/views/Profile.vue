@@ -1,12 +1,24 @@
 <template>
   <div class="app">
     <h1>User profile page for {{ user.username }}.</h1>
-    <div v-for="workout in user.workouts" v-bind:key="workout.id">
+    <div class="row">
+      <div class="col-sm-4" v-for="workout in user.workouts" v-bind:key="workout.id">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ workout.created_at }}</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a v-on:click="showWorkoutSummary(workout)" class="btn btn-primary">Workout Summary</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div v-for="workout in user.workouts" v-bind:key="workout.id">
       <p>{{ workout.created_at }}</p>
       <div>
         <button v-on:click="showWorkoutSummary(workout)">Workout Summary</button>
       </div>
-    </div>
+    </div> -->
 
     <div>
       <dialog id="workoutsummary-details">

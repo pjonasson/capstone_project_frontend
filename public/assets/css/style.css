@@ -1142,3 +1142,10 @@ section {
 #footer .credits a {
   color: #34b7a7;
 }
+#app {
+  padding-top: 100px;
+  padding-bottom: 150px;
+}
+.btn btn-primary {
+  position: center;
+}

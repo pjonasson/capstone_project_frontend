@@ -5,7 +5,7 @@
         <h1 class="logo me-auto me-lg-0"><a href="index.html">Better Than Yesterday Fitness</a></h1>
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="/signup">Sign Up</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/generate_workout">Generate New Workout</a></li>
