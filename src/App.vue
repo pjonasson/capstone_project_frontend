@@ -6,11 +6,10 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
             <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="/signup">Sign Up</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/generate_workout">Generate New Workout</a></li>
+            <li><a href="/profile">Profile</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -37,11 +36,11 @@
       </div>
     </header>
     <router-view />
-    <footer id="footer">
+    <footer class="fixed-bottom" id="footer" position="fixed">
       <div class="container">
         <div class="copyright">
           &copy; Copyright
-          <strong><span>Kelly</span></strong>
+          <strong><span>Percy Jonasson</span></strong>
           . All Rights Reserved
         </div>
         <div class="credits">
