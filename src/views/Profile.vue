@@ -22,7 +22,7 @@
 
     <div>
       <dialog id="workoutsummary-details">
-        <form method="dialog" onsubmit="setTimeout(function(){window.location.reload();},10);">
+        <form method="dialog">
           <h1>Workout Summary</h1>
           <div v-for="lift_workout in currentWorkout.lift_workouts" v-bind:key="lift_workout.id">
             <p>Exercise: {{ lift_workout.lift.name }}</p>

@@ -3,6 +3,9 @@
     <h1>Here is your workout, {{ user.first_name }}.</h1>
     <div v-for="lift_workout in user.workouts[0].lift_workouts" v-bind:key="lift_workout.id">
       <h2>Exercise: {{ lift_workout.lift.name }}</h2>
+      <div>
+        <button>Change Lift</button>
+      </div>
       <p>1st Set: {{ lift_workout.set1_reps }} reps</p>
       <p>Weight: {{ lift_workout.weight1 }}</p>
       <p>2nd Set: {{ lift_workout.set2_reps }} reps</p>
@@ -10,6 +13,17 @@
       <p>3rd Set: {{ lift_workout.set3_reps }} reps</p>
       <p>Weight: {{ lift_workout.weight3 }}</p>
       <p>Comments: {{ lift_workout.comments }}</p>
+      <iframe
+        v-bind:key="lift_workout.id"
+        width="500"
+        height="420"
+        v-bind:src="`https://www.youtube.com/embed/${lift_workout.lift.video_url.split('=')[1]}`"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
       <a href="">{{ lift_workout.lift.video_url }}</a>
       <br />
       <div>
