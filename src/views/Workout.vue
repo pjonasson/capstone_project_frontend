@@ -17,6 +17,8 @@
       </div>
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
     </div>
+    <img src="https://qrtag.net/api/qr_4.png?url=http://localhost:8080/workout" alt="qrtag" />
+
     <router-link to="/profile">Finish Workout</router-link>
 
     <div>
