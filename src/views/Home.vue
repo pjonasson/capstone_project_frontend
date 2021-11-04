@@ -1,6 +1,11 @@
 <template>
   <div class="app">
-    <h1>My home page will be information about the app/ how it works.</h1>
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+        <h1>Better Than Yesterday Fitness</h1>
+        <h2>I'm a professional illustrator from San Francisco</h2>
+      </div>
+    </section>
   </div>
 </template>
 
