@@ -24,7 +24,6 @@
         allowfullscreen
       ></iframe>
 
-      <a href="">{{ lift_workout.lift.video_url }}</a>
       <br />
       <div>
         <button v-on:click="showLiftWorkout(lift_workout)">Update Exercise Stats</button>
