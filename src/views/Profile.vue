@@ -1,10 +1,11 @@
 <template>
-  <div class="app">
-    <h1>User profile page for {{ user.username }}.</h1>
+  <div id="spacing" class="app">
     <div class="text-center section">
       <h2 class="h2">Workout Progress Calendar</h2>
 
       <v-calendar is-expanded :attributes="attributes" is-dark />
+      <br />
+      <h1>User profile page for {{ user.username }}.</h1>
 
       <!-- <v-calendar class="custom-calendar max-w-full" :masks="masks" disable-page-swipe is-expanded>
         <template v-slot:day-content="{ day }">
@@ -22,7 +23,7 @@
         </template>
       </v-calendar> -->
     </div>
-    <div class="row">
+    <div id="spacing" class="row">
       <div class="col-sm-4" v-for="workout in user.workouts" v-bind:key="workout.id">
         <div class="card">
           <div class="card-body">
@@ -65,6 +66,12 @@
   </div>
 </template>
 
+<style>
+#spacing {
+  padding: 25px;
+}
+</style>
+
 <script>
 import axios from "axios";
 import Vue from "vue";
@@ -76,6 +83,7 @@ export default {
   data: function () {
     // const month = new Date().getMonth();
     // const year = new Date().getFullYear();
+
     return {
       userId: localStorage.getItem("userId"),
       user: { workouts: [{}] },
@@ -95,6 +103,7 @@ export default {
       ],
     };
   },
+
   created: function () {
     this.currentUser();
   },

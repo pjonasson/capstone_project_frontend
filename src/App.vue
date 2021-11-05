@@ -36,9 +36,7 @@
       <router-link to="/profile">Profile</router-link> -->
       </div>
     </header>
-    <div class="container">
-      <router-view />
-    </div>
+    <router-view />
     <footer class="fixed-bottom" id="footer" position="fixed">
       <div class="container">
         <div class="copyright">
