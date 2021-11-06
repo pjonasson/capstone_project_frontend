@@ -142,7 +142,10 @@ export default {
       var deleteWorkoutParams = this.currentWorkout.id;
       axios.delete("http://localhost:3000/workouts/" + deleteWorkoutParams).then((response) => {
         console.log("Workout succesfully deleted", response.data);
-        this.$router.go();
+        this.$parent.flashMessage = "Workout Deleted";
+        this.$router.push("/profile");
+
+        // this.$router.go();
       });
     },
   },
