@@ -36,6 +36,8 @@
       <router-link to="/profile">Profile</router-link> -->
       </div>
     </header>
+    <div v-if="flashMessage" class="alert alert-success" v-on:click="flashMessage = ''">{{ flashMessage }}</div>
+
     <router-view />
     <footer class="fixed-bottom" id="footer" position="fixed">
       <div class="container">
@@ -63,7 +65,9 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      flashMessage: "",
+    };
   },
   methods: {
     isLoggedIn: function () {

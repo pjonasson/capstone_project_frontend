@@ -43,7 +43,7 @@ export default {
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("userName", response.data.first_name);
           localStorage.setItem("userId", response.data.user_id);
-
+          this.$parent.flashMessage = "Logged in successfull!";
           this.$router.push("/");
         })
         .catch((error) => {

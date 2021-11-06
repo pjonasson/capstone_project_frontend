@@ -59,6 +59,7 @@ export default {
   data: function () {
     return {
       primarymuscles: [],
+      liftParams: {},
       legLifts: 0,
       bicepLifts: 0,
       tricepLifts: 0,
@@ -99,6 +100,7 @@ export default {
         console.log("Workout generated", this.workout);
       });
     },
+
     addToWorkout: function (primary_muscle_id, x) {
       for (let quantity = 0; quantity < x; quantity++) {
         var liftWorkoutParams = {

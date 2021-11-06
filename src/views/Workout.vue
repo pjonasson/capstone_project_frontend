@@ -24,7 +24,7 @@
       <br />
       <div>
         <button v-on:click="showLiftWorkout(lift_workout)">Update Exercise Stats</button>
-        <button>Change Lift</button>
+        <button v-on:click="showLift(lift_workout)">Change Lift</button>
       </div>
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
     </div>
@@ -70,6 +70,22 @@
         </form>
       </dialog>
     </div>
+
+    <div>
+      <dialog id="lift-details">
+        <form method="dialog">
+          <h1>Current Lift</h1>
+          <h2>{{ currentLiftWorkout.lift.name }}</h2>
+          <input type="text" v-model="searchFilter" />
+          <div v-for="lift in filterBy(lifts, searchFilter, 'name')" v-bind:key="lift.id">
+            <p>{{ lift.name }}</p>
+          </div>
+
+          <button v-on:click="updateLiftWorkout(currentLiftWorkout)">Update</button>
+          <button>Close</button>
+        </form>
+      </dialog>
+    </div>
   </div>
 </template>
 
@@ -87,11 +103,18 @@ export default {
       user: { workouts: [{}] },
       workouts: [],
       lift_workouts: [],
-      currentLiftWorkout: {},
+      currentLiftWorkout: {
+        lift: {
+          name: "",
+        },
+      },
+      lifts: {},
+      searchFilter: "",
     };
   },
   created: function () {
     this.currentUser();
+    this.liftIndex();
   },
   methods: {
     currentUser: function () {
@@ -100,10 +123,21 @@ export default {
         console.log(this.user);
       });
     },
+    liftIndex: function () {
+      axios.get("http://localhost:3000/lifts").then((response) => {
+        this.lifts = response.data;
+        console.log("All lifts", response.data);
+      });
+    },
     showLiftWorkout: function (lift_workout) {
       console.log(lift_workout);
       this.currentLiftWorkout = lift_workout;
       document.querySelector("#liftworkout-details").showModal();
+    },
+    showLift: function (lift_workout) {
+      console.log(lift_workout);
+      this.currentLiftWorkout = lift_workout;
+      document.querySelector("#lift-details").showModal();
     },
     updateLiftWorkout: function (lift_workout) {
       var editLiftWorkoutParams = {
