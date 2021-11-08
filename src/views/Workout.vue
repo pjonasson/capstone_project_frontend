@@ -1,5 +1,73 @@
 <template>
   <div class="app">
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Here is your workout, {{ user.first_name }}</h2>
+        </div>
+
+        <div class="row" v-for="lift_workout in user.workouts[0].lift_workouts" v-bind:key="lift_workout.id">
+          <div class="col-lg-4">
+            <iframe
+              v-bind:key="lift_workout.id"
+              width="400"
+              height="420"
+              v-bind:src="`https://www.youtube.com/embed/${lift_workout.lift.video_url.split('=')[1]}`"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>Exercise: {{ lift_workout.lift.name }}</h3>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>1st Set:</strong>
+                    {{ lift_workout.set1_reps }}
+                  </li>
+
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>2nd Set:</strong>
+                    {{ lift_workout.set2_reps }}
+                  </li>
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>3rd Set:</strong>
+                    {{ lift_workout.set3_reps }}
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>Weight:</strong>
+                    {{ lift_workout.weight2 }}
+                  </li>
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>Weight:</strong>
+                    {{ lift_workout.weight2 }}
+                  </li>
+                  <li>
+                    <i class="bi bi-rounded-right"></i>
+                    <strong>Weight:</strong>
+                    {{ lift_workout.weight2 }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p>Comments: {{ lift_workout.comments }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <h1>Here is your workout, {{ user.first_name }}.</h1>
     <div v-for="lift_workout in user.workouts[0].lift_workouts" v-bind:key="lift_workout.id">
       <h2>Exercise: {{ lift_workout.lift.name }}</h2>
