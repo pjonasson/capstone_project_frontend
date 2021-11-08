@@ -57,7 +57,7 @@
             <p>Comments: {{ lift_workout.comments }}</p>
           </div>
           <button v-on:click="repeatWorkout">Repeat Workout</button>
-          <button v-on:click="deleteWorkout">Delete Workout</button>
+          <button v-on:click="deleteWorkout(currentWorkout)">Delete Workout</button>
           <br />
           <button>Close</button>
         </form>
@@ -138,12 +138,13 @@ export default {
         this.$router.push("/workout");
       });
     },
-    deleteWorkout: function () {
-      var deleteWorkoutParams = this.currentWorkout.id;
-      axios.delete("http://localhost:3000/workouts/" + deleteWorkoutParams).then((response) => {
+    deleteWorkout: function (workout) {
+      // var deleteWorkoutParams = this.currentWorkout.id;
+      axios.delete("http://localhost:3000/workouts/" + this.currentWorkout.id).then((response) => {
         console.log("Workout succesfully deleted", response.data);
         this.$parent.flashMessage = "Workout Deleted";
-        this.$router.push("/profile");
+        var index = this.user.workouts.indexOf(workout);
+        this.user.workouts.splice(index, 1);
 
         // this.$router.go();
       });
