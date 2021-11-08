@@ -109,6 +109,7 @@ export default {
         };
         axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
           console.log("Test", response.data);
+          this.$parent.flashMessage = "Your lifts have been added to the workout";
         });
       }
     },

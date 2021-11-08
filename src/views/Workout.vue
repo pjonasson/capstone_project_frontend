@@ -48,27 +48,33 @@
                   <li>
                     <i class="bi bi-rounded-right"></i>
                     <strong>Weight:</strong>
-                    {{ lift_workout.weight2 }}
+                    {{ lift_workout.weight1 }} lbs/kgs
                   </li>
                   <li>
                     <i class="bi bi-rounded-right"></i>
                     <strong>Weight:</strong>
-                    {{ lift_workout.weight2 }}
+                    {{ lift_workout.weight2 }} lbs/kgs
                   </li>
                   <li>
                     <i class="bi bi-rounded-right"></i>
                     <strong>Weight:</strong>
-                    {{ lift_workout.weight2 }}
+                    {{ lift_workout.weight3 }} lbs/kgs
                   </li>
                 </ul>
               </div>
             </div>
             <p>Comments: {{ lift_workout.comments }}</p>
+            <button type="button" class="btn btn-danger" v-on:click="showLiftWorkout(lift_workout)">
+              Log Exercise Stats
+            </button>
+            <div>
+              <button type="button" class="btn btn-secondary" v-on:click="showLift(lift_workout)">Change Lift</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <h1>Here is your workout, {{ user.first_name }}.</h1>
+    <!-- <h1>Here is your workout, {{ user.first_name }}.</h1>
     <div v-for="lift_workout in user.workouts[0].lift_workouts" v-bind:key="lift_workout.id">
       <h2>Exercise: {{ lift_workout.lift.name }}</h2>
       <p>1st Set: {{ lift_workout.set1_reps }} reps</p>
@@ -80,8 +86,8 @@
       <p>Comments: {{ lift_workout.comments }}</p>
       <iframe
         v-bind:key="lift_workout.id"
-        width="500"
-        height="420"
+        width="25vh"
+        height="25vh"
         v-bind:src="`https://www.youtube.com/embed/${lift_workout.lift.video_url.split('=')[1]}`"
         title="YouTube video player"
         frameborder="0"
@@ -96,9 +102,8 @@
       </div>
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
     </div>
-    <img src="https://qrtag.net/api/qr_4.png?url=https://www.linkedin.com/in/percy-jonasson/" alt="qrtag" />
-
-    <router-link to="/profile">Finish Workout</router-link>
+    <img src="https://qrtag.net/api/qr_4.png?url=https://www.linkedin.com/in/percy-jonasson/" alt="qrtag" /> -->
+    <button type="button" class="btn btn-success" v-on:click="routeToProfile">Finish Workout</button>
 
     <div>
       <dialog id="liftworkout-details">
@@ -265,6 +270,9 @@ export default {
       //     console.log(this.user.workouts[0], index);
       //   });
       // });
+    },
+    routeToProfile: function () {
+      this.$router.push("/profile");
     },
   },
 };

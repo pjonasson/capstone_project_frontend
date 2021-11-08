@@ -3,9 +3,42 @@
     <div class="text-center section">
       <h2 class="h2">Workout Progress Calendar</h2>
 
-      <v-calendar is-expanded :attributes="attributes" is-dark />
+      <v-calendar is-expanded :attributes="attributes" />
       <br />
       <h1>User profile page for {{ user.username }}.</h1>
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <div
+          class="col-lg-4 col-md-6 portfolio-item filter-app"
+          v-for="workout in user.workouts"
+          v-bind:key="workout.id"
+        >
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" />
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a
+                  href="assets/img/portfolio/portfolio-1.jpg"
+                  data-gallery="portfolioGallery"
+                  class="portfolio-lightbox"
+                  title="App 1"
+                >
+                  <i class="bx bx-plus"></i>
+                </a>
+                <a
+                  href="portfolio-details.html"
+                  class="portfolio-details-lightbox"
+                  data-glightbox="type: external"
+                  title="Portfolio Details"
+                >
+                  <i class="bx bx-link"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- <v-calendar class="custom-calendar max-w-full" :masks="masks" disable-page-swipe is-expanded>
         <template v-slot:day-content="{ day }">
@@ -119,7 +152,7 @@ export default {
           console.log(workout, workout.created_at, new Date(workout.created_at));
           this.attributes.push({
             key: "workout",
-            highlight: "orange",
+            highlight: "green",
             dates: new Date(workout.created_at),
           });
         });
