@@ -77,12 +77,12 @@
           <h1>Current Lift</h1>
           <h2>{{ currentLiftWorkout.lift.name }}</h2>
           <input type="text" v-model="searchFilter" />
+
           <div v-for="lift in filterBy(lifts, searchFilter, 'name')" v-bind:key="lift.id">
-            <p>{{ lift.name }}</p>
+            <p v-on:click="changeLift(currentLiftWorkout)">{{ lift.name }}</p>
           </div>
 
-          <button v-on:click="updateLiftWorkout(currentLiftWorkout)">Update</button>
-          <button>Close</button>
+          <button>Cancel</button>
         </form>
       </dialog>
     </div>
@@ -157,6 +157,18 @@ export default {
         .catch((error) => {
           console.log(error.response);
         });
+    },
+    changeLift: function (lift_workout) {
+      axios.delete("http://localhost:3000/lift_workouts/" + lift_workout.id).then((response) => {
+        console.log("lift_workout deleted", response.data);
+      });
+      var editLiftParams = {
+        lift_id: 3,
+        workout_id: 76,
+      };
+      axios.post("http://localhost:3000/lift_workouts/", editLiftParams).then((response) => {
+        console.log("New Lift_workout added", response.data);
+      });
     },
   },
 };
