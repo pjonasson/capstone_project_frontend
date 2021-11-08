@@ -79,10 +79,10 @@
           <input type="text" v-model="searchFilter" />
 
           <div v-for="lift in filterBy(lifts, searchFilter, 'name')" v-bind:key="lift.id">
-            <p v-on:click="changeLift(currentLiftWorkout)">{{ lift.name }}</p>
+            <p v-on:click="changeLift(currentLiftWorkout, lift)">{{ lift.name }}</p>
           </div>
 
-          <button>Cancel</button>
+          <button>Close</button>
         </form>
       </dialog>
     </div>
@@ -99,6 +99,8 @@ export default {
   mixins: [Vue2Filters.mixin],
   data: function () {
     return {
+      currentWorkout: [],
+      updatedLift: {},
       userId: localStorage.getItem("userId"),
       user: { workouts: [{}] },
       workouts: [],
@@ -158,17 +160,43 @@ export default {
           console.log(error.response);
         });
     },
-    changeLift: function (lift_workout) {
-      axios.delete("http://localhost:3000/lift_workouts/" + lift_workout.id).then((response) => {
-        console.log("lift_workout deleted", response.data);
-      });
-      var editLiftParams = {
-        lift_id: 3,
-        workout_id: 76,
+    changeLift: function (lift_workout, clickedLift) {
+      var changeLiftWorkoutParams = {
+        lift_id: clickedLift.id,
+        set1_reps: 10,
+        weight1: 0,
+        set2_reps: 10,
+        weight2: 0,
+        set3_reps: 10,
+        weight3: 0,
+        comments: "",
       };
-      axios.post("http://localhost:3000/lift_workouts/", editLiftParams).then((response) => {
-        console.log("New Lift_workout added", response.data);
-      });
+      axios
+        .patch("http://localhost:3000/lift_workouts/" + lift_workout.id, changeLiftWorkoutParams)
+        .then((response) => {
+          console.log("lift_workout updated", response.data);
+          this.$router.go();
+          // var index = this.user.workouts[0].lift_workouts.indexOf(lift_workout);
+          // this.user.workouts[0].lift_workouts.splice(index, 1, response.data);
+        });
+      // var index = this.user.workouts[0].lift_workouts.indexOf(lift_workout);
+
+      // axios.delete("http://localhost:3000/lift_workouts/" + lift_workout.id).then((response) => {
+      //   console.log(index);
+      //   console.log("lift_workout deleted", response.data);
+      //   console.log(this.user.workouts[0]);
+      //   var editLiftParams = {
+      //     lift_id: clickedLift.id,
+      //     workout_id: this.user.workouts[0].id,
+      //   };
+
+      //   axios.post("http://localhost:3000/lift_workouts/", editLiftParams).then((response) => {
+      //     console.log("New Lift_workout added", response.data);
+      //     this.$parent.flashMessage = "Lift changed and workout updated.";
+      //     this.user.workouts[0].lift_workouts.splice(index, 1, response.data);
+      //     console.log(this.user.workouts[0], index);
+      //   });
+      // });
     },
   },
 };

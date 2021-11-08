@@ -139,14 +139,11 @@ export default {
       });
     },
     deleteWorkout: function (workout) {
-      // var deleteWorkoutParams = this.currentWorkout.id;
       axios.delete("http://localhost:3000/workouts/" + this.currentWorkout.id).then((response) => {
         console.log("Workout succesfully deleted", response.data);
         this.$parent.flashMessage = "Workout Deleted";
         var index = this.user.workouts.indexOf(workout);
         this.user.workouts.splice(index, 1);
-
-        // this.$router.go();
       });
     },
   },
