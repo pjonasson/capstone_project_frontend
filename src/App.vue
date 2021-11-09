@@ -36,7 +36,9 @@
       <router-link to="/profile">Profile</router-link> -->
       </div>
     </header>
-    <div v-if="flashMessage" class="alert alert-success" v-on:click="flashMessage = ''">{{ flashMessage }}</div>
+    <div v-if="flashMessage" class="alert alert-success flash-message" v-on:click="flashMessage = ''">
+      {{ flashMessage }}
+    </div>
 
     <router-view />
     <footer class="fixed-bottom" id="footer" position="fixed">
@@ -60,7 +62,16 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.flash-message {
+  position: fixed;
+  top: 5em;
+  z-index: 10001;
+}
+.alert alert-success {
+  position: absolute;
+}
+</style>
 
 <script>
 export default {

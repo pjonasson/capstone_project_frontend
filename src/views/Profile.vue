@@ -1,44 +1,51 @@
 <template>
-  <div id="spacing" class="app">
+  <div class="app">
     <div class="text-center section">
       <h2 class="h2">Workout Progress Calendar</h2>
 
       <v-calendar is-expanded :attributes="attributes" />
       <br />
-      <h1>User profile page for {{ user.username }}.</h1>
-      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-        <div
-          class="col-lg-4 col-md-6 portfolio-item filter-app"
-          v-for="workout in user.workouts"
-          v-bind:key="workout.id"
-        >
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" />
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a
-                  href="assets/img/portfolio/portfolio-1.jpg"
-                  data-gallery="portfolioGallery"
-                  class="portfolio-lightbox"
-                  title="App 1"
-                >
-                  <i class="bx bx-plus"></i>
-                </a>
-                <a
-                  href="portfolio-details.html"
-                  class="portfolio-details-lightbox"
-                  data-glightbox="type: external"
-                  title="Portfolio Details"
-                >
-                  <i class="bx bx-link"></i>
-                </a>
+      <section id="portfolio" class="portfolio">
+        <div class="container" data-aos="fade-up" padding="100px">
+          <div class="section-title">
+            <h2>Logged Workouts</h2>
+          </div>
+
+          <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12 d-flex justify-content-center"></div>
+          </div>
+
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="col-lg-4 col-md-6 portfolio-item filter-app"
+              v-for="workout in user.workouts"
+              v-bind:key="workout.id"
+            >
+              <div class="portfolio-wrap">
+                <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" />
+                <div class="portfolio-info">
+                  <h4>{{ workout.friendly_created_at }}</h4>
+                  <p>{{ workout.friendly_time_created_at }}</p>
+                  <div class="portfolio-links">
+                    <a class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
+                      <!-- Button trigger modal -->
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        v-on:click="showWorkoutSummary(workout)"
+                      >
+                        Workout Summary
+                      </button>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- <v-calendar class="custom-calendar max-w-full" :masks="masks" disable-page-swipe is-expanded>
         <template v-slot:day-content="{ day }">
@@ -56,7 +63,8 @@
         </template>
       </v-calendar> -->
     </div>
-    <div id="spacing" class="row">
+
+    <!-- <div id="spacing" class="row">
       <div class="col-sm-4" v-for="workout in user.workouts" v-bind:key="workout.id">
         <div class="card">
           <div class="card-body">
@@ -66,7 +74,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div v-for="workout in user.workouts" v-bind:key="workout.id">
       <p>{{ workout.created_at }}</p>
@@ -74,8 +82,40 @@
         <button v-on:click="showWorkoutSummary(workout)">Workout Summary</button>
       </div>
     </div> -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Workout Summary</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" v-for="lift_workout in currentWorkout.lift_workouts" v-bind:key="lift_workout.id">
+            <p>Exercise: {{ lift_workout.lift.name }}</p>
+            <p>1st Set: {{ lift_workout.set1_reps }}</p>
+            <p>Weight: {{ lift_workout.weight1 }}</p>
+            <p>2nd Set: {{ lift_workout.set2_reps }}</p>
+            <p>Weight: {{ lift_workout.weight2 }}</p>
+            <p>3rd Set: {{ lift_workout.set3_reps }}</p>
+            <p>Weight: {{ lift_workout.weight3 }}</p>
+            <p>Comments: {{ lift_workout.comments }}</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              v-on:click="deleteWorkout(currentWorkout)"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Delete Workout
+            </button>
+            <button v-on:click="repeatWorkout" type="button" class="btn btn-primary">Repeat Workout</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div>
+    <!-- <div>
       <dialog id="workoutsummary-details">
         <form method="dialog">
           <h1>Workout Summary</h1>
@@ -95,13 +135,14 @@
           <button>Close</button>
         </form>
       </dialog>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <style>
 #spacing {
   padding: 25px;
+  padding-bottom: 30px;
 }
 </style>
 
@@ -162,13 +203,14 @@ export default {
     showWorkoutSummary: function (workout) {
       console.log(workout);
       this.currentWorkout = workout;
-      document.querySelector("#workoutsummary-details").showModal();
+      document.querySelector("#exampleModal").showModal();
     },
     repeatWorkout: function () {
       var repeatWorkoutParams = { workout_id: this.currentWorkout.id };
       axios.post("http://localhost:3000/workouts", repeatWorkoutParams).then((response) => {
         console.log("Workout cloned", response.data);
         this.$router.push("/workout");
+        this.$router.go();
       });
     },
     deleteWorkout: function (workout) {

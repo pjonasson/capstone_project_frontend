@@ -103,8 +103,13 @@
       <div v-for="lift in lift_workout" v-bind:key="lift.id"></div>
     </div>
     <img src="https://qrtag.net/api/qr_4.png?url=https://www.linkedin.com/in/percy-jonasson/" alt="qrtag" /> -->
-    <button type="button" class="btn btn-success" v-on:click="routeToProfile">Finish Workout</button>
-
+    <div class="container2">
+      <div class="center">
+        <button type="button" class="btn btn-success" position="absolute" v-on:click="routeToProfile">
+          Finish Workout
+        </button>
+      </div>
+    </div>
     <div>
       <dialog id="liftworkout-details">
         <form method="dialog">
@@ -162,7 +167,21 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.container2 {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
 
 <script>
 import axios from "axios";
