@@ -1,14 +1,45 @@
 <template>
-  <div class="GenerateWorkout">
-    <section id="hero" class="d-flex align-items-center">
-      <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-        <h1>Below are the muscles groups to choose from.</h1>
-        <h2>How many lifts would you like to do for each muscle?</h2>
+  <div class="app">
+    <section id="generate" class="d-flex">
+      <div class="container flex-column align-items-left" data-aos="zoom-in" data-aos-delay="100">
+        <p></p>
+        <p></p>
+        <p></p>
+        <h1>
+          To the right are the muscles groups to choose from. Select the quantity for each muscle group and add each to
+          your workout.
+        </h1>
+        <p></p>
+        <div class="align-items-left">
+          <h2>Chest:</h2>
+          <input type="number" v-model="chestLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(1, chestLifts)">Add to Workout</button>
+          <h2>Legs:</h2>
+          <input type="number" v-model="legLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(2, legLifts)">Add to Workout</button>
+          <h2>Biceps:</h2>
+          <input type="number" v-model="bicepLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(3, bicepLifts)">Add to Workout</button>
+          <h2>Triceps:</h2>
+          <input type="number" v-model="tricepLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(4, tricepLifts)">Add to Workout</button>
+          <h2>Shoulders:</h2>
+          <input type="number" v-model="shoulderLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(5, shoulderLifts)">Add to Workout</button>
+          <h2>Back:</h2>
+          <input type="number" v-model="backLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(6, backLifts)">Add to Workout</button>
+          <h2>Core:</h2>
+          <input type="number" v-model="coreLifts" />
+          <button class="btn btn-secondary btn-sm" v-on:click="addToWorkout(7, coreLifts)">Add to Workout</button>
+          <h2>Total Lifts: {{ totalLifts() }}</h2>
+          <button class="btn btn-success btn-lg" v-on:click="updateWorkout">Time to Workout!</button>
+        </div>
       </div>
     </section>
     <!-- End Hero -->
 
-    <div class="container" text-align: center>
+    <!-- <div class="container" text-align: center>
       <p>
         Chest:
         <input type="number" v-model="chestLifts" />
@@ -46,12 +77,16 @@
       </p>
       <p>Total Lifts: {{ totalLifts() }}</p>
       <button v-on:click="updateWorkout">Time to Workout!</button>
-    </div>
+    </div> -->
     <!-- <router-link to="/workout">Time to Workout!</router-link> -->
   </div>
 </template>
 
-<style></style>
+<style>
+#generate {
+  height: 84vh !important;
+}
+</style>
 
 <script>
 import axios from "axios";

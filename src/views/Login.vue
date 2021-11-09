@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <section id="hero" class="d-flex align-items-top">
+    <section id="login" class="d-flex align-items-top">
       <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
         <form v-on:submit.prevent="submit()">
           <h1>Login</h1>
@@ -16,12 +16,18 @@
             <input type="password" v-model="newSessionParams.password" />
           </div>
           <br />
-          <input type="submit" value="Submit" />
+          <input type="submit" class="btn btn-danger btn-lg" value="Submit" />
         </form>
       </div>
     </section>
   </div>
 </template>
+
+<style>
+#generate {
+  height: 50vh;
+}
+</style>
 
 <script>
 import axios from "axios";
@@ -43,7 +49,6 @@ export default {
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("userName", response.data.first_name);
           localStorage.setItem("userId", response.data.user_id);
-          this.$parent.flashMessage = "Logged in successfull!";
           this.$router.push("/profile");
         })
         .catch((error) => {
