@@ -11,7 +11,7 @@
       </h4>
       <h4>
         To simply start, either sign up or login at the top of the page. After, navigate your way to the 'Generate
-        Workout Page' to begin the process there. You will be prompted to select the number of different exercises you
+        Workout' page to begin the process there. You will be prompted to select the number of different exercises you
         wish to complete per muscle group. After increasing the quantity to the desired amount, make sure you click 'Add
         to Workout'. This is similar to adding items to an online shopping cart. Once you have added all muscle gourps
         and quantities that you like, click the giant green button to be taken to your generated workout. Good luck!
