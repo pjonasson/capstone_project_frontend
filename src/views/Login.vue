@@ -16,7 +16,7 @@
             <input type="password" v-model="newSessionParams.password" />
           </div>
           <br />
-          <input type="submit" class="btn btn-danger btn-lg" value="Submit" />
+          <input type="submit" class="btn btn-danger btn-lg" value="Get to Work!" />
         </form>
       </div>
     </section>

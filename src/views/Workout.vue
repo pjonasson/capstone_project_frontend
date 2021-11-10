@@ -68,6 +68,7 @@
               Log Exercise Stats
             </button>
             <div>
+              <p></p>
               <button type="button" class="btn btn-secondary" v-on:click="showLift(lift_workout)">Change Lift</button>
             </div>
           </div>

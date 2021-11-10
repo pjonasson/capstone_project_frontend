@@ -176,13 +176,41 @@ h6 {
 }
 #generate h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 700;
   line-height: 50 px;
   color: #dfd9d9;
   position: center;
 }
 #generate h2 {
+  color: #dfd9d9;
+  margin: 10px 0 0 0;
+  font-size: 15px;
+}
+/*--------------------------------------------------------------
+# About Page
+--------------------------------------------------------------*/
+#aboutpage {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/about2.jpg") top right;
+  background-size: auto;
+  padding-left: 10px;
+}
+#aboutpage .container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+#aboutpage h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 50 px;
+  color: #dfd9d9;
+  position: center;
+}
+#aboutpage h2 {
   color: #dfd9d9;
   margin: 10px 0 0 0;
   font-size: 15px;

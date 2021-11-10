@@ -203,7 +203,6 @@ export default {
     showWorkoutSummary: function (workout) {
       console.log(workout);
       this.currentWorkout = workout;
-      document.querySelector("#exampleModal").showModal();
     },
     repeatWorkout: function () {
       var repeatWorkoutParams = { workout_id: this.currentWorkout.id };
