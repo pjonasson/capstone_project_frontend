@@ -143,9 +143,11 @@
             Comments:
             <input type="text" v-model="currentLiftWorkout.comments" />
           </p>
-          <button v-on:click="updateLiftWorkout(currentLiftWorkout)">Update</button>
-          <!-- <button v-on:click="destroyProduct(currentLiftWorkout)">Delete</button> -->
-          <button>Close</button>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-primary" v-on:click="updateLiftWorkout(currentLiftWorkout)">Update</button>
+            <!-- <button v-on:click="destroyProduct(currentLiftWorkout)">Delete</button> -->
+            <button class="btn btn-secondary">Close</button>
+          </div>
         </form>
       </dialog>
     </div>
@@ -153,7 +155,7 @@
     <div>
       <dialog id="lift-details">
         <form method="dialog">
-          <h1>Current Lift</h1>
+          <h1>Current Lift:</h1>
           <h2>{{ currentLiftWorkout.lift.name }}</h2>
           <input type="text" v-model="searchFilter" />
 

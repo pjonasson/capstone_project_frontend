@@ -191,31 +191,46 @@ h6 {
 # About Page
 --------------------------------------------------------------*/
 #aboutpage {
-  width: 100%;
-  height: 100vh;
-  background: url("../img/about2.jpg") top right;
-  background-size: auto;
-  padding-left: 10px;
-}
-#aboutpage .container {
-  display: grid;
-  width: 100%;
-  height: 100%;
-}
-#aboutpage h1 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 50 px;
-  color: #dfd9d9;
-  position: center;
-}
-#aboutpage h2 {
-  color: #dfd9d9;
-  margin: 10px 0 0 0;
-  font-size: 15px;
+  background: url("../img/about3.jpg");
+  background-size: cover;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
+#aboutpage h1 {
+  font-family: "Raleway", sans-serif;
+
+  margin: 0;
+  font-size: 50px;
+  font-weight: 0;
+  line-height: 50 px;
+  color: #030303;
+  position: center;
+  text-align: center;
+  background-color: #e9e8e6;
+}
+#aboutpage h2 {
+  color: #0a0a0a;
+  margin: 10px 0 0 0;
+  font-size: 25px;
+  background-color: #e9e8e6;
+  text-align: center;
+}
+#aboutpage h4 {
+  color: #dfd9d9;
+  margin: 10px 0 0 0;
+  font-size: 20px;
+}
+#aboutpage p {
+  color: #080808;
+  margin: 10px 0 0 0;
+  font-size: 20px;
+}
+#aboutpage h5 {
+  color: #0c0b0b;
+  margin: 10px 0 0 0;
+  font-size: 20px;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
