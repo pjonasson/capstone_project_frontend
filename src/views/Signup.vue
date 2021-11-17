@@ -73,7 +73,7 @@ export default {
           console.log(response.data);
           this.$parent.flashMessage = "New User Created";
 
-          this.$router.push("/login");
+          this.$router.push("https://arcane-tor-51371.herokuapp.com/login");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

@@ -4,7 +4,7 @@
       <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
         <h1>Better Than Yesterday Fitness</h1>
         <h2>The only standard is the one you set for yourself</h2>
-        <a href="/about" class="btn-about">About The App</a>
+        <a href="https://arcane-tor-51371.herokuapp.com/about" class="btn-about">About The App</a>
       </div>
     </section>
   </div>

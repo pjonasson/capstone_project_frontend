@@ -208,7 +208,7 @@ export default {
       var repeatWorkoutParams = { workout_id: this.currentWorkout.id };
       axios.post("https://arcane-tor-51371.herokuapp.com/workouts", repeatWorkoutParams).then((response) => {
         console.log("Workout cloned", response.data);
-        this.$router.push("/workout");
+        this.$router.push("https://arcane-tor-51371.herokuapp.com/workout");
         this.$router.go();
       });
     },

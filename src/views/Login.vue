@@ -49,7 +49,7 @@ export default {
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("userName", response.data.first_name);
           localStorage.setItem("userId", response.data.user_id);
-          this.$router.push("/profile");
+          this.$router.push("https://arcane-tor-51371.herokuapp.com/profile");
         })
         .catch((error) => {
           console.log(error.response);
