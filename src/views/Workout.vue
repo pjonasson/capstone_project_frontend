@@ -294,7 +294,7 @@ export default {
       // });
     },
     routeToProfile: function () {
-      this.$router.push("https://arcane-tor-51371.herokuapp.com/profile");
+      this.$router.push("/profile");
     },
   },
 };
