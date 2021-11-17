@@ -68,7 +68,7 @@ export default {
   methods: {
     submit: function () {
       axios
-        .post("/users", this.newUserParams)
+        .post("https://arcane-tor-51371.herokuapp.com/users", this.newUserParams)
         .then((response) => {
           console.log(response.data);
           this.$parent.flashMessage = "New User Created";

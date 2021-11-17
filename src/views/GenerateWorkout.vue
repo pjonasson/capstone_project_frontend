@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     indexPrimaryMuscles() {
-      axios.get("http://localhost:3000/primary_muscles").then((response) => {
+      axios.get("https://arcane-tor-51371.herokuapp.com/primary_muscles").then((response) => {
         this.primarymuscles = response.data;
         console.log("All primary muscles", this.primarymuscles);
       });
@@ -130,7 +130,7 @@ export default {
     },
     generateWorkout: function () {
       var workoutParams = { number_of_lifts: 0 };
-      axios.post("http://localhost:3000/workouts", workoutParams).then((response) => {
+      axios.post("https://arcane-tor-51371.herokuapp.com/workouts", workoutParams).then((response) => {
         this.workout = response.data;
         console.log("Workout generated", this.workout);
       });
@@ -142,7 +142,7 @@ export default {
           primary_muscle_id: primary_muscle_id,
           workout_id: this.workout.id,
         };
-        axios.post("http://localhost:3000/lift_workouts", liftWorkoutParams).then((response) => {
+        axios.post("https://arcane-tor-51371.herokuapp.com/lift_workouts", liftWorkoutParams).then((response) => {
           console.log("Test", response.data);
           this.$parent.flashMessage = "Your lifts have been added to the workout";
         });
@@ -150,10 +150,12 @@ export default {
     },
     updateWorkout: function () {
       var workoutParams = { number_of_lifts: this.sum };
-      axios.patch("http://localhost:3000/workouts/" + this.workout.id, workoutParams).then((response) => {
-        console.log("Workout updated", response.data);
-        this.$router.push("/workout");
-      });
+      axios
+        .patch("https://arcane-tor-51371.herokuapp.com/workouts/" + this.workout.id, workoutParams)
+        .then((response) => {
+          console.log("Workout updated", response.data);
+          this.$router.push("/workout");
+        });
     },
   },
 };

@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     liftIndex: function () {
-      axios.get("http://localhost:3000/lifts").then((response) => {
+      axios.get("https://arcane-tor-51371.herokuapp.com/lifts").then((response) => {
         console.log("Lift Index", response.data);
         this.lifts = response.data;
       });

@@ -183,7 +183,7 @@ export default {
   },
   methods: {
     currentUser: function () {
-      axios.get("http://localhost:3000/users/" + this.userId).then((response) => {
+      axios.get("https://arcane-tor-51371.herokuapp.com/users/" + this.userId).then((response) => {
         this.user = response.data;
 
         // const month = new Date().getMonth();
@@ -206,14 +206,14 @@ export default {
     },
     repeatWorkout: function () {
       var repeatWorkoutParams = { workout_id: this.currentWorkout.id };
-      axios.post("http://localhost:3000/workouts", repeatWorkoutParams).then((response) => {
+      axios.post("https://arcane-tor-51371.herokuapp.com/workouts", repeatWorkoutParams).then((response) => {
         console.log("Workout cloned", response.data);
         this.$router.push("/workout");
         this.$router.go();
       });
     },
     deleteWorkout: function (workout) {
-      axios.delete("http://localhost:3000/workouts/" + this.currentWorkout.id).then((response) => {
+      axios.delete("https://arcane-tor-51371.herokuapp.com/workouts/" + this.currentWorkout.id).then((response) => {
         console.log("Workout succesfully deleted", response.data);
         this.$parent.flashMessage = "Workout Deleted";
         var index = this.user.workouts.indexOf(workout);

@@ -42,7 +42,7 @@ export default {
   methods: {
     submit: function () {
       axios
-        .post("/sessions", this.newSessionParams)
+        .post("https://arcane-tor-51371.herokuapp.com//sessions", this.newSessionParams)
         .then((response) => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           console.log(response.data);

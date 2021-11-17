@@ -215,13 +215,13 @@ export default {
   },
   methods: {
     currentUser: function () {
-      axios.get("http://localhost:3000/users/" + this.userId).then((response) => {
+      axios.get("https://arcane-tor-51371.herokuapp.com/users/" + this.userId).then((response) => {
         this.user = response.data;
         console.log(this.user);
       });
     },
     liftIndex: function () {
-      axios.get("http://localhost:3000/lifts").then((response) => {
+      axios.get("https://arcane-tor-51371.herokuapp.com/lifts").then((response) => {
         this.lifts = response.data;
         console.log("All lifts", response.data);
       });
@@ -247,7 +247,7 @@ export default {
         comments: lift_workout.comments,
       };
       axios
-        .patch("http://localhost:3000/lift_workouts/" + lift_workout.id, editLiftWorkoutParams)
+        .patch("https://arcane-tor-51371.herokuapp.com/lift_workouts/" + lift_workout.id, editLiftWorkoutParams)
         .then((response) => {
           console.log("Success", response.data);
         })
@@ -267,7 +267,7 @@ export default {
         comments: "",
       };
       axios
-        .patch("http://localhost:3000/lift_workouts/" + lift_workout.id, changeLiftWorkoutParams)
+        .patch("https://arcane-tor-51371.herokuapp.com/lift_workouts/" + lift_workout.id, changeLiftWorkoutParams)
         .then((response) => {
           console.log("lift_workout updated", response.data);
           this.$router.go();
