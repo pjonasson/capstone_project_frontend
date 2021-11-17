@@ -154,7 +154,7 @@ export default {
         .patch("https://arcane-tor-51371.herokuapp.com/workouts/" + this.workout.id, workoutParams)
         .then((response) => {
           console.log("Workout updated", response.data);
-          this.$router.push("https://arcane-tor-51371.herokuapp.com/workout");
+          this.$router.push("/workout");
         });
     },
   },
